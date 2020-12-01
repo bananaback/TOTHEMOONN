@@ -1,0 +1,72 @@
+tileImgs = love.graphics.newImage("imgs/newtile.png")
+tileQuads = {}
+for y = 1, 3 do
+    for x = 1, 9 do
+        tileQuads[(y-1)*9+x] = love.graphics.newQuad((x-1)*16, (y-1)*16, 16, 16, tileImgs:getDimensions())
+    end
+end
+cowImg = love.graphics.newImage("imgs/4.png")
+gunImg = love.graphics.newImage("imgs/6.png")
+mooAmmoImg = love.graphics.newImage("imgs/10.png")
+barrilImg = love.graphics.newImage("imgs/barril.png")
+explosionImg = love.graphics.newImage("imgs/explosion.png")
+gem1Img = love.graphics.newImage("imgs/gem1.png")
+gem2Img = love.graphics.newImage("imgs/gem2.png")
+gem3Img = love.graphics.newImage("imgs/gem3.png")
+gem4Img = love.graphics.newImage("imgs/gem4.png")
+fx2Img = love.graphics.newImage("imgs/fx2.png")
+powerup1Img = love.graphics.newImage("imgs/powerup1.png")
+fullheartImg = love.graphics.newImage("imgs/fullheart.png")
+emptyheartImg = love.graphics.newImage("imgs/emptyheart.png")
+numberImg = love.graphics.newImage("imgs/number.png")
+numberQuads = {}
+for i = 1, 10 do
+    numberQuads[i] = love.graphics.newQuad((i-1)*20, 0, 20, 20, numberImg:getDimensions())
+end
+
+bigfont = love.graphics.newFont(50)
+smallfont = love.graphics.newFont(20)
+boarImg = love.graphics.newImage("imgs/boar.png")
+horseImg = love.graphics.newImage("imgs/horse.png")
+sheepImg = love.graphics.newImage("imgs/sheep.png")
+tinyImg = love.graphics.newImage("imgs/tiny.png")
+turtleImg = love.graphics.newImage("imgs/turtle.png")
+back1Img = love.graphics.newImage("imgs/back2.png")
+back2Img = love.graphics.newImage("imgs/back3.png")
+back3Img = love.graphics.newImage("imgs/back4.png")
+back4Img = love.graphics.newImage("imgs/back5.png")
+back5Img = love.graphics.newImage("imgs/back6.png")
+back6Img = love.graphics.newImage("imgs/back7.png")
+back7Img = love.graphics.newImage("imgs/back8.png")
+back8Img = love.graphics.newImage("imgs/back9.png")
+back9Img = love.graphics.newImage("imgs/back10.png")
+back10Img = love.graphics.newImage("imgs/back11.png")
+spikeBallImg = love.graphics.newImage("imgs/spikeball.png")
+bubbleImg = love.graphics.newImage("imgs/bubble.png")
+
+moonImg = love.graphics.newImage("imgs/moon.png")
+nImg = love.graphics.newImage("imgs/n.png")
+book1Img = love.graphics.newImage("imgs/40.png")
+book2Img = love.graphics.newImage("imgs/41.png")
+book3Img = love.graphics.newImage("imgs/42.png")
+openBookImg = love.graphics.newImage("imgs/62.png")
+
+
+---audio
+explosionSound = love.audio.newSource("sounds/explosion1.ogg", "static")
+jumpSound = love.audio.newSource("sounds/jump.wav", "static")
+gold1Sound = love.audio.newSource("sounds/gold1.wav", "static")
+gold2Sound = love.audio.newSource("sounds/gold2.wav", "static")
+gold3Sound = love.audio.newSource("sounds/gold3.wav", "static")
+gold4Sound = love.audio.newSource("sounds/gold4.wav", "static")
+powerup1Sound = love.audio.newSource("sounds/pu1.wav", "static")
+shootSound = love.audio.newSource("sounds/shoot-1.wav", "static")
+hitSound = love.audio.newSource("sounds/death.wav", "static")
+music1 = love.audio.newSource("music/1.ogg", "stream")
+music2 = love.audio.newSource("music/2.ogg", "stream")
+music3 = love.audio.newSource("music/3.ogg", "stream")
+music4 = love.audio.newSource("music/4.ogg", "stream")
+music1:setLooping(true)
+music2:setLooping(true)
+music3:setLooping(true)
+music4:setLooping(true)

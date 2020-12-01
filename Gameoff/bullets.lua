@@ -1,0 +1,2 @@
+local listOfBullets = {}
+return listOfBullets
