@@ -22,7 +22,7 @@ local endGameScene = 1
 local endGameOpacity = 0
 --player
 local Player = require"player"
-local player = Player(200, -672*-2)
+local player = Player(200, -672*90)
 
 --variables for map
 bigmap = require "bigmap"
