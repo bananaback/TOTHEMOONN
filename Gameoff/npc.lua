@@ -77,6 +77,14 @@ function NPC:new(x, y, name)
         self.message[3].x = -200
         self.message[3].y = -80
         self.message[3].text = "Also remember to pick up shields and health" 
+    elseif self.name == "master" then
+        self.height = 16
+        self.currentTalk = 1
+        self.message = {}
+        self.message[1] = {}
+        self.message[1].x = -200
+        self.message[1].y = -80
+        self.message[1].text = "Hi boy. Press O to hear me speak"
     end
     self.scale = 3
     self.isNPC = true
@@ -111,10 +119,12 @@ local function npcFilter(item, other)
 end
 
 function NPC:update(dt)
+    if self.name ~= "master" then
     if self.yVel < self.terminalVelocity then
         self.yVel = self.yVel + self.gravity*dt
     else
         self.yVel = self.terminalVelocity
+    end
     end
     local goalX, goalY = self.x + self.xVel*dt, self.y + self.yVel*dt
     local actualX, actualY, cols, len = world:move(self, goalX, goalY, npcFilter)
@@ -159,7 +169,8 @@ end
 
 function NPC:draw()
     love.graphics.setColor(1, 1, 1)
-    if self.name == "cow" then
+    if self.name == "master" then
+        love.graphics.setColor(1, 1, 0)
         love.graphics.draw(cowImg, self.x + self.width/2, self.y + self.height/2, self.rot, self.scale, self.scale, 9, 5)
     elseif self.name == "boar" then
         love.graphics.draw(boarImg, self.x + self.width/2, self.y + self.height/2, self.rot, self.scale, self.scale, 7, 4)

@@ -89,6 +89,11 @@ function Player:new(x, y)
     self.messageto["turtle"][3].x = -40
     self.messageto["turtle"][3].y = -120
     self.messageto["turtle"][3].text = "WOW"
+    self.messageto["master"] = {}
+    self.messageto["master"][1] = {}
+    self.messageto["master"][1].x = -40
+    self.messageto["master"][1].y = -120
+    self.messageto["master"][1].text = "M...M...Master..."
     self.talkTo = "none"
     self.talkToNumber = 0
     self.hurtReload = 0
@@ -266,6 +271,11 @@ function Player:update(dt)
                 self.talkTo = "tiny"
             elseif other.name == "turtle" then
                 self.talkTo = "turtle"
+            elseif other.name == "master" then
+                self.talkTo = "master"
+                if isEndGame then
+                    gamestate = "endgame"
+                end
             end
         end
         if other.isSpikeBall then

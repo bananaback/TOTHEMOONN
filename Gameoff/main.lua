@@ -16,13 +16,14 @@ local Item = require "item"
 gameover = false
 local gameoverfade = 0
 gamestate = "intro"
+isEndGame = false
 local introScene = 1
 local introOpacity = 0
 local endGameScene = 1
 local endGameOpacity = 0
 --player
 local Player = require"player"
-local player = Player(200, -672*90)
+local player = Player(200, -672*-2)
 
 --variables for map
 bigmap = require "bigmap"
@@ -398,6 +399,7 @@ local function addNPC()
     table.insert(entities, NPC(280, 1300, "sheep"))
     table.insert(entities, NPC(340, 1000, "tiny"))
     table.insert(entities, NPC(200, 1200, "turtle"))
+    table.insert(entities, NPC(200, -672*99, "master"))
 end
 
 local basePlatform = {{0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
@@ -663,6 +665,8 @@ function love.keypressed(key)
                 player = Player(200, 480)
             end
             player:checkTalk()
+        elseif key == "o" then
+            isEndGame = true
         end
     elseif gamestate == "intro" then
         introScene = introScene + 1
@@ -861,7 +865,7 @@ function love.draw()
             love.graphics.draw(back2Img, 0, 0, 0, 8, 8)
             love.graphics.setColor(1, 1, 1, introOpacity)
             love.graphics.setFont(smallfont)
-            love.graphics.print("Someone told him that he met him\r\n on a mountain trip and was given a message\r\n by him about the key to life's success\r\nAnd was given a golden jewel.", 20, 440)
+            love.graphics.print("A strange guy told Moon Moon that\r\n he met Master Moo in a mountain\r\nand was gifted a golden gem\r\nthat could guide the owner to life's success", 20, 440)
             love.graphics.setColor(1, 1, 0)
             love.graphics.draw(cowImg, 200, 200, 0, 8, 8, 9, 5)
             
@@ -908,6 +912,7 @@ function love.draw()
         love.graphics.setColor(1, 1, 1)
         love.graphics.draw(back5Img, 0, 0, 0, 8, 8) 
         if endGameScene == 1 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -917,6 +922,7 @@ function love.draw()
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
         elseif endGameScene == 2 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -927,6 +933,7 @@ function love.draw()
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
             love.graphics.print("HEY KID!", 170, 100)
         elseif endGameScene == 3 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -935,8 +942,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("Finally you can come here", 170, 100)    
+            love.graphics.print("Finally you can come here", 10, 100)    
         elseif endGameScene == 4 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -945,8 +953,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("I've been waiting for this date for a long time", 170, 100)    
+            love.graphics.print("I've been waiting for this date for a long time", 10, 100)    
         elseif endGameScene == 5 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -955,8 +964,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("The crazy guys think I don't exist", 170, 100)    
+            love.graphics.print("The crazy guys think I don't exist", 80, 100)    
         elseif endGameScene == 6 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -965,8 +975,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("But you are the exception.\r\nTo get here\r\nyou must have a perseverance and a strong belief", 140, 80)
+            love.graphics.print("But you are the exception.\r\nTo get here\r\nyou must have a perseverance\r\n and a strong belief", 10, 300)
         elseif endGameScene == 7 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -975,8 +986,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("Thousands of years have passed\r\nI am too old. Before I die\r\nI want you to do me a favor.", 140, 80)
+            love.graphics.print("Thousands of years have passed\r\nI am too old. Before I die\r\nI want you to do me a favor.", 10, 300)
         elseif endGameScene == 8 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -985,8 +997,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("Inherit this jewel, go to the moon \r\nto help the MooSho tribe\r\nThey are in desperate need of your help.", 140, 80)
+            love.graphics.print("Inherit this jewel, go to the moon \r\nto help the MooSho tribe\r\nThey are in desperate need of your help.", 10, 300)
         elseif endGameScene == 9 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -995,8 +1008,9 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("I believe in you, young man\r\nI used to be like you, who dared to dream\r\nPlease continue my peacekeeping career", 140, 80)
+            love.graphics.print("I believe in you, young man\r\nI used to be like you, who dared to dream\r\nPlease continue my peacekeeping career", 10, 300)
         elseif endGameScene == 10 then
+            love.graphics.setFont(smallfont)
             love.graphics.setColor(1, 1, 1, endGameOpacity)
             for i, v in ipairs(entities) do
                 if v.isFx2 then
@@ -1005,7 +1019,7 @@ function love.draw()
             end
             love.graphics.setColor(1, 1, 0, endGameOpacity)
             love.graphics.draw(cowImg, 250, 150, 0, 8, 8, 9, 5)
-            love.graphics.print("Your journey has only just begun", 140, 80)
+            love.graphics.print("Your journey has only just begun", 10, 300)
         elseif endGameScene == 11 then
             love.graphics.setColor(0, 1, 0)
             love.graphics.setFont(bigfont)
